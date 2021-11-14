@@ -1,23 +1,18 @@
 {% extends "base.html" %}
 
 {% block footer %}
+<footer class="md-footer">
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+            <center>CC-BY-NC-SA -- Quentin Fortier</center>
+          </div>
+      </div>
+    </div>
+  </div>  
 {% endblock %}
 
 {% block content %}
-{% if page.edit_url %}
-  <a href="{{ page.edit_url }}" title="{{ lang.t('edit.link.title') }}" class="md-content__button md-icon">
-    {% include ".icons/material/pencil.svg" %}
-  </a>
-{% endif %}
 {{ page.content }}
-{% if page and page.meta %}
-  {% if page.meta.git_revision_date_localized or
-        page.meta.revision_date
-  %}
-    {% include "partials/source-file.html" %}
-  {% endif %}
-{% endif %}
-{% endblock %}
-{% block disqus %}
-{% include "partials/integrations/disqus.html" %}
 {% endblock %}
