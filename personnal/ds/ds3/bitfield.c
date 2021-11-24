@@ -3,10 +3,10 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-uint singleton(uint i);
-uint union2(uint s1, uint s2);
-bool has(uint s, uint e);
-uint card(uint s);
+uint singleton(uint);
+uint union2(uint, uint);
+bool has(uint, uint);
+uint card(uint);
 
 int main() {
     printf("singleton de 4: \t%d\n", singleton(4));
