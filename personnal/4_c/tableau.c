@@ -23,8 +23,8 @@ void reverse(int* tab, int n) {
     };
 };
 
-int* copy(int t[], int n) {
-    int* t2 = (int*)malloc(n * sizeof(int));
+double* copy(double t[], int n) {
+    double* t2 = (double*)malloc(n * sizeof(double));
     for (int i=0; i < n; i++) {
         t2[i] = t[i];
     };
@@ -38,9 +38,9 @@ int main() {
     printf("tab[0]: %d\n", t[0]);
     reverse(t, 4);
     printf("tab[0]: %d\n", t[0]);
-    int t2[] = {6.4, 8, 12.1, 7};
-    printf("t2[]:    %d %d %d %d\n", t2[0], t2[1], t2[2], t2[3]);
-    int* t2_cp = copy(t2, 4);
-    printf("t2_cp[]: %d %d %d %d\n", t2_cp[0], t2_cp[1], t2_cp[2], t2_cp[3]);
+    double t2[] = {6.4, 8, 12.1, 7};
+    printf("t2[]:    %f %f %f %f\n", t2[0], t2[1], t2[2], t2[3]);
+    double* t2_cp = copy(t2, 4);
+    printf("t2_cp[]: %f %f %f %f\n", t2_cp[0], t2_cp[1], t2_cp[2], t2_cp[3]);
     return 0;
 }
