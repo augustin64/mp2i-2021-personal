@@ -132,7 +132,8 @@ int main() {
     // tests_fractions();
     // tests_melange_de_knuth();
     tests_tri_insertion();
+    tests_implementation_file();
+    tests_fusion_listes();
     return 0;
-}i
-tests_implementation_file();
-tests_fusion_listes()
+};
+
