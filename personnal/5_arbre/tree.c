@@ -12,6 +12,14 @@ struct tree {
 
 int max(int a, int b){ return a > b ? a : b; };
 
+tree* make_node(int r) {
+    tree *t = (tree*)malloc(sizeof(tree));
+    t->g = NULL;
+    t->d = NULL;
+    t->val = r;
+    return t;
+};
+
 int size(tree *t) {
     if (t == NULL) {
         return 0;
