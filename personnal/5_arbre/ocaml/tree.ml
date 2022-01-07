@@ -15,3 +15,8 @@ let rec diametre t = match t with
     | N(_, g, d) -> let dg, hg = diametre g in
                     let dd, hd = diametre d in
                     max (max dg dd) (hg + hd + 2), 1 + max hg hd;;
+
+let rec add e = function
+    | E -> N(e, E, E)
+    | N(r, g, d) when e < r -> N(r, add e g, d)
+    | N(r, g, d) -> N(r, g, add e d);;

@@ -1,4 +1,5 @@
 #use "tree.ml"
+#use "bst.ml"
 
 let rec prefix acc = function
     | E -> acc
@@ -41,9 +42,25 @@ let rec reconstruct pre inf =
         done;
         N(r, (reconstruct g_pre g_inf), (reconstruct d_pre d_inf)));;
 
-let croissant l =
+let rec est_abr1 = function
+    | E -> true, max_int, min_int
+    (* Renvoie est_un_abr, element_min, element_max *)
+    | N(r, g, d) -> let v_g, min_g, max_g = est_abr1 g in
+                    let v_d, min_d, max_d = est_abr1 d in
+                    (v_g && v_d && max_g <= r && min_d >= r),
+                    (min min_g r),
+                    (max max_d r);;
+
+let rec croissant = function
+    | [] -> true 
+    | [e] -> true
+    | e1::e2::q when e1 < e2 -> false
+    | _::q -> croissant q;;
+
+let est_abr2 a = croissant (infix a);;
+
+let sort l =
     let rec aux = function
-        | [] -> true, max_int
-        | e::q -> let v, prec = aux q in
-                (e <= prec && v), e in
-    let verif, last = aux l in verif;;
+        | [] -> E
+        | e::q -> add e (aux q) in
+    infix (aux l);;
