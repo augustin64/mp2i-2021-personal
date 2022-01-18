@@ -29,12 +29,12 @@ let rec get k = function
     | E -> failwith "Pas de k-ième élément"
     | N(r, g, d, _) -> let size_g = sz g in
                     if size_g = (k - 1) then r
-                    else if size_g > k then get k g
+                    else if size_g >= k then get k g
                     else get (k - size_g - 1) d;;
 
 let rec del k = function
     | E -> failwith "Pas de k-ième élément"
     | N(r, g, d, s) -> let size_g = sz g in 
                     if size_g = (k - 1) then merge g d
-                    else if size_g > k then N(r, del k g, d, s-1)
+                    else if size_g >= k then N(r, del k g, d, s-1)
                     else N(r, g, del (k - size_g - 1) d, s-1);;
