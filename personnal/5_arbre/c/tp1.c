@@ -1,13 +1,6 @@
 #include <stdio.h>
 #include  <stdlib.h>
-
-typedef struct tree tree;
-
-struct tree {
-    tree* g;
-    tree* d;
-    int val;
-};
+#include "tree.c"
 
 int n_leaf(tree* t) {
     if(!t)
@@ -15,14 +8,6 @@ int n_leaf(tree* t) {
     if(!(t->g) && !(t->d))
         return 1;
     return n_leaf(t->g) + n_leaf(t->d);
-}
-
-tree* make_node(int r) {
-    tree *t = (tree*)malloc(sizeof(tree));
-    t->g = NULL;
-    t->d = NULL;
-    t->val = r;
-    return t;
 };
 
 tree* exemple_tree() {
@@ -35,9 +20,22 @@ tree* exemple_tree() {
     t->d->g = make_node(6);
     t->d->d = make_node(7);
     return t;
-}
+};
 
+tree* complet(int n) {
+    if (n==0){
+        return NULL;
+    }
+    tree *t = make_node(0);
+    t->g = complet(n-1);
+    t->d = complet(n-1);
+    return t;
+};
+
+/*
 int main() {
     printf("leafs: %d\n", n_leaf(exemple_tree()));
+    printf("leafs complet 4: %d\n", n_leaf(complet(4)));
     return 0;
 };
+*/

@@ -34,11 +34,11 @@ int height(tree* t) {
     return 1 + max(height(t->g), height(t->d));
 };
 
-bool complet(tree *t) {
+bool est_complet(tree *t) {
     if(!t) {
         return true;
     };
-    return complet(t->g) && complet(t->d) && size(t->g) == size(t->d);
+    return est_complet(t->g) && est_complet(t->d) && size(t->g) == size(t->d);
 }
 
 int depth(int* pred, int v) {
@@ -53,8 +53,4 @@ int diametre(tree *t) {
         return -1;
     return max(max(diametre(t->g), diametre(t->d)),
             height(t->g)+height(t->d)+2);
-}
-
-int main() {
-    return 0;
 }
