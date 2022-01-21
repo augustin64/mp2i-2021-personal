@@ -13,19 +13,16 @@ let heap_to_tree h =
     else N(h.a.(i), aux 2*i+1, aux 2*i+2) in
   aux 0;;
 
-let divide =
-  | e::q -> e, q
-  | [e] -> e, []
-
+(* Question 5: Fusion de k listes triées en O(n log k) *)
 let kfusion ll = 
   let file = create () in
-  let rec remplir ll = match ll with
+  let rec remplir = function
     | [] -> ()
-    | e::q -> file.add e in
+    | e::q -> file.add e; remplir q in
   remplir ll;
   let rec extract () =
-    if file.is_empty then []
-    else let e, q = divide (file.take_min) in
-            file.add q;
-            e::extract in
+    if file.is_empty () then []
+    else match file.take_min () with
+      | [] -> ()
+      | e::q -> e::(extract q)
   extract ();;
