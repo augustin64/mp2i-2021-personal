@@ -26,3 +26,22 @@ let kfusion ll =
       | [] -> ()
       | e::q -> e::(extract q)
   extract ();;
+
+(* Seconde méthode de fusion de k listes triées*)
+let rec divise = function
+  | [] -> [], []
+  | [l] -> [l], []
+  | l1::l2::q -> let ll1, ll2 = divise q in
+                  l1::ll1, l2::ll2;;
+
+let rec fusion l1 l2 = match l1, l2 with
+  | [], _ -> l2
+  | _, [] -> l1
+  | e1::q1, e2::q2 -> if e1 < e2 then e1::(fusion q1 l2)
+                      else e2::(fusion l1 q2);;
+
+let rec kfusion2 = function
+  | [] -> []
+  | [l] -> l
+  | ll -> let ll1, ll2 = divise ll in
+          fusion (kfusion2 ll1) (kfusion2 ll2);;
