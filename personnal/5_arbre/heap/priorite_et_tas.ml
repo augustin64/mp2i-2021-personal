@@ -1,3 +1,4 @@
+#!/usr/bin/ocaml
 type 'a heap = { a: 'a array; mutable n : int };
 type 'a tree = E | N of 'a * 'a tree * 'a tree;
 type 'a fp = {
