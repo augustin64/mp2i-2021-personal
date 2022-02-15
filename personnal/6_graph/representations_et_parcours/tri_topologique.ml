@@ -37,3 +37,14 @@ let rec post_dfs g vu r =
 
 
 *)
+
+let tr g =
+	let n = Array.length g in
+	let lg = Array.make n [] in
+	for i=0 to n-1 do
+		let rec aux = function
+			| [] -> ()
+			| e::q -> (lg.(e) <- i::lg.(e); aux q) in
+		aux g.(i)
+	done;
+	lg;;
