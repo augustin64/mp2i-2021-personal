@@ -26,7 +26,8 @@ let rec fusion l1 l2 = match l1, l2 with
 let rec tri = function
   | [] -> []
   | [e] -> [e]
-  | l -> let l1, l2 = split l i fusion (tri l1) (tri l2);;
+  | l -> let l1, l2 = split l in
+          fusion (tri l1) (tri l2);;
 
 let liste_aretes_triees m =
   tri (liste_aretes m);;
@@ -76,3 +77,24 @@ let liste_aretes_triees m =
 (* Question 5)
    Récurrence ou parcours (dfs, bfs)
 *)
+
+(* Partie III. Algorithme de Kruskal *)
+let creer n = (* O(n) *)
+  Array.init n ( fun i -> i );;
+
+let composante c i = (* O(1) *)
+  c.(i);;
+
+let fusionner t i j = (* O(n) *)
+  for k=0 to Array.length t-1 do
+    if t.(k) = i then t.(k) <- j
+  done;;
+
+let kruskal m =
+  let t = creer (Array.length m) in
+  let rec aux = function
+    | [] -> []
+    | (u, v, w)::q when t.(u) = t.(v) -> aux q
+    | (u, v, w)::q -> (fusionner t u v;
+                (u, v, w)::(aux q)) in
+  aux (liste_aretes_triees m);;
