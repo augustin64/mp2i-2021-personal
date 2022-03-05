@@ -1,4 +1,4 @@
-Le corrigé du DS 5 est en ligne.
+[Conseils pour la programmation en TIPE](tipe/projet_tipe.pdf)
 
 [Des informations sur le concours INFO MP/MPI aux ENS](https://diplome.di.ens.fr/informatique-ens)
 
