@@ -7,6 +7,7 @@ type 'v graph = { (* 'v est le type des sommets *)
   (* add_vertex : 'v -> unit; *)
 }
 
+
 let create_adj_graph n =
   let m = Array.make_matrix n n 0 in {
     add_edge = (fun u v -> m.(u).(v) <- 1);
@@ -22,6 +23,7 @@ let create_adj_graph n =
     )
   }
 
+
 let mat_to_list m =
   let n = Array.length m in
   let t = Array.make n [] in
@@ -32,6 +34,7 @@ let mat_to_list m =
       done
   done;
   t;;
+
 
 let list_to_mat t =
   let n = Array.length t in

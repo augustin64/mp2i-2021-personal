@@ -1,3 +1,4 @@
+```ocaml
 type 'a arb = N of 'a * 'a arb list
 
 
@@ -31,28 +32,34 @@ let centre g =
   !s;;
 
 
-(* Si g est un arbre, on a : *)
+```
+
+ Si g est un arbre, on a :   
+```ocaml
 let rec diam_arb = function
   | N(r, []) -> 0, 0 (* renvoie diametre, hauteur *)
   | N(r, e::q) -> let dq, hq = diam_arb (N(r, q)) in
                   let de, dq = diam_arb e in
                   max de (max dq (he + hq + 1)), max (he + 1) hq
 
-(* I.5 *)
-(* On définit G' = (V', E')
-      où  V' = (V\S)u{s}
-          E' = E\{ {u, v}∈E | u∈S } u { {s,v} | {u,v}∈E, u∈S }
+```
 
-    Solution simple:
-      Faire un BFS avec initialement
-      cur = S (ou une file contenant S)
-*)
+## I.5
+ On définit G' = (V', E')  
+      où  V' = (V\S)u{s}  
+          E' = E\{ {u, v}∈E | u∈S } u { {s,v} | {u,v}∈E, u∈S }  
 
-(* I.6 *)
-(*  Plus court chemin de u à w, passant par v :
-    - Faire un BFS depuis v
-    - Concaténer plus court chemin C1 de u vers v et C2 de v vers w
-*)
+    Solution simple:  
+      Faire un BFS avec initialement  
+      cur = S (ou une file contenant S)  
 
-(* I.7 *)
-(*Un BFS part de u, un autre part de v*)
+
+## I.6
+  Plus court chemin de u à w, passant par v :  
+    - Faire un BFS depuis v  
+    - Concaténer plus court chemin C1 de u vers v et C2 de v vers w  
+
+
+## I.7
+Un BFS part de u, un autre part de v  
+

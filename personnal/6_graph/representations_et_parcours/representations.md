@@ -1,3 +1,4 @@
+```ocaml
 type 'a arb = N of 'a * 'a arb list
 
 
@@ -36,5 +37,8 @@ let root t =
 let arb_of_pere t =
   to_arb (fils t) (root t);;
 
-(* I.4 *)
-(*On a $\binom{100}{2}$ possibilités*)
+```
+
+## I.4
+On a $\binom{100}{2}$ possibilités  
+
