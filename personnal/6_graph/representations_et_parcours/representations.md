@@ -40,5 +40,5 @@ let arb_of_pere t =
 ```
 
 ## I.4
-On a $\binom{100}{2}$ possibilités  
+On a 2 parmi 100 possibilités  
 
