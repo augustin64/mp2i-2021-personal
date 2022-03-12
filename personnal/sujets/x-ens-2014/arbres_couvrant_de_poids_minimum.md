@@ -50,8 +50,8 @@ let liste_aretes_triees m =
 
      alors UuV est connexe: en effet si x ∈ U, y ∈ V  
 
-     alors  x~u (car U est connexe)  
-            y~v (car V est connexe)  
+     alors  x\~u (car U est connexe)  
+            y\~v (car V est connexe)  
 
      Donc il existe un chemin de x à u auquel on ajoute l'arête {u,v}  
      puis un chemin de v vers y, ce qui donne un  
