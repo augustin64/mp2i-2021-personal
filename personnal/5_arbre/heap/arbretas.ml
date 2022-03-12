@@ -35,7 +35,7 @@ Démonstration question 2:
 Arbre de la question 3:
 
         (2, 2)
-        /     \
+        /     \\
     (1, 4)    (5, 6)
       /         /
   (0, 7)    (3, 8)
