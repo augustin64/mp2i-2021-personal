@@ -1,4 +1,5 @@
-(* Partie I. Implémentation des graphes *)
+(* I Implémentation des graphes *)
+(* I.1 *)
 let liste_aretes t =
   let n = Array.length t in
   let ar = ref [] in
@@ -10,6 +11,7 @@ let liste_aretes t =
   done;
   !ar;;
 
+(* I.2 *)
 let rec split = function
   | [] -> [], []
   | [e] -> [e], []
@@ -32,9 +34,10 @@ let rec tri = function
 let liste_aretes_triees m =
   tri (liste_aretes m);;
 
-(* Partie II. Préliminaires sur les arbres *)
+(* II Préliminaires sur les arbres *)
 
-(* Question 3)
+(* II.3 *)
+(*
    - Cas 1: u et v sont dans des composantes connexes différentes:
 
      Soit U (resp. V) composante connexe de u (resp. v)
@@ -74,22 +77,25 @@ let liste_aretes_triees m =
      qui forme un cycle en ajoutant uv
  *)
 
-(* Question 5)
-   Récurrence ou parcours (dfs, bfs)
-*)
+(* II.5 *)
+(*Récurrence ou parcours (dfs, bfs)*)
 
-(* Partie III. Algorithme de Kruskal *)
+(* III Algorithme de Kruskal *)
+(* III.13 *)
 let creer n = (* O(n) *)
   Array.init n ( fun i -> i );;
 
+(* III.14 *)
 let composante c i = (* O(1) *)
   c.(i);;
 
+(* III.15 *)
 let fusionner t i j = (* O(n) *)
   for k=0 to Array.length t-1 do
     if t.(k) = i then t.(k) <- j
   done;;
 
+(* III.17 *)
 let kruskal m =
   let t = creer (Array.length m) in
   let rec aux = function
