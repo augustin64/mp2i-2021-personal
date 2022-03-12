@@ -8,9 +8,9 @@
 
 ## I.1 
 
-Soit neN et soit (a,...,ak)
-Si ak>n alors r(n,k)=r(n,k-1)
-Sinon: r(n,k) = min(r(n,k-1), r(n-ak,k)+1)
+Soit neN et soit (a,...,ak)  
+Si ak>n alors r(n,k)=r(n,k-1)  
+Sinon: r(n,k) = min(r(n,k-1), r(n-ak,k)+1)  
 
 
 ## I.2 
