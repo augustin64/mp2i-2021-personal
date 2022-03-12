@@ -1,15 +1,18 @@
-#!/usr/bin/ocaml
 type 'a tree_huffman = F of 'a | N of 'a tree_huffman * 'a tree_huffman
+
 type 'a fp = {
   add : 'a -> unit;
   is_empty : unit -> bool;
   take_min : unit -> 'a;
 }
+
 type ('k, 'v) dico = {
   get : 'k -> 'v option;
   add : ('k*'v) -> unit;
 }
+
 val create : unit -> ('k * 'v) dico (* crée un dico vide *)
+
 
 let rec read t l = match t with
   | F(a) -> a, l
@@ -18,10 +21,12 @@ let rec read t l = match t with
     | e::q -> read g q
     | [] -> failwith "Pas de lettre à cet emplacement";;
 
+
 let rec decode t l = match l with
 | [] -> []
 | _ -> let a, q = read t l in
         a::(decode t q);;
+
 
 let to_huffman f l =
   let rec remplir = function
@@ -39,6 +44,7 @@ let to_huffman f l =
   retire ();
   f;;
 
+
 let to_dico arb =
   let d = create () in
   let rec ajouter a p = match a with
@@ -47,6 +53,7 @@ let to_dico arb =
                 ajouter r (1::p) in
   ajouter arb [];
   d;;
+
 
 let rec encoder d t = match t with
   | [] -> []

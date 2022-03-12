@@ -1,3 +1,4 @@
+```ocaml
 type 'a arb = V | N of 'a * 'a arb * 'a arb
 
 let swap t i j =
@@ -10,38 +11,41 @@ let shuffle t =
     swap t i (Random.int (i+1))
 done;;
 
-(*
+```
 
-Démonstration question 2:
-  Hn: "il existe un unique arbretas contenant une liste de n couples fixés"
-  H0: E est la seule possibilité
 
-  Soit n dans N
-  Supposons Hk, Pour tout k <= n
 
-  Soit l unne liste de n+1 couples
-  Soit (e, p) le couple de l de p min
-  Soit l1 (resp. l2) la liste des couples dont l'élément est < e (resp. >)
+Démonstration question 2:  
+  Hn: "il existe un unique arbretas contenant une liste de n couples fixés"  
+  H0: E est la seule possibilité  
 
-  D'après l'hypothèse de réccurence, il existe une unique façon de choisir
-  g et d arbretas contenant l1 et l2.
+  Soit n dans N  
+  Supposons Hk, Pour tout k <= n  
 
-  Donc il existe un unique arbretas contenant l.
+  Soit l unne liste de n+1 couples  
+  Soit (e, p) le couple de l de p min  
+  Soit l1 (resp. l2) la liste des couples dont l'élément est < e (resp. >)  
 
-*)
+  D'après l'hypothèse de réccurence, il existe une unique façon de choisir  
+  g et d arbretas contenant l1 et l2.  
 
-(*
+  Donc il existe un unique arbretas contenant l.  
 
-Arbre de la question 3:
 
-        (2, 2)
-        /     \
-    (1, 4)    (5, 6)
-      /         /
-  (0, 7)    (3, 8)
 
-*)
 
+
+Arbre de la question 3:  
+
+        (2, 2)  
+        /     \  
+    (1, 4)    (5, 6)  
+      /         /  
+  (0, 7)    (3, 8)  
+
+
+
+```ocaml
 let rotd = function
   | N(r, N(gr, gg, gd), d) -> N(gr, gg, N(r, gd, d))
   | _ -> failwith "Pas de rotation droite possible";;
@@ -74,3 +78,5 @@ let rec del a e = match a with
                   then del (rotd a) e
                   else del (rotg a) e
   | V -> V;;
+
+```
