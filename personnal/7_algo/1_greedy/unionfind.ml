@@ -1,8 +1,8 @@
-(* Question 1)
-   La structure de tableau des pères est plus pertinente dans cet exercice car on ne s'intéresse qu'aux pères, pas aux fils ou quoi que ce soit d'autre
-*)
+(* I.1 *)
+(*La structure de tableau des pères est plus pertinente dans cet exercice car on ne s'intéresse qu'aux pères, pas aux fils ou quoi que ce soit d'autre*)
 
-(* Question 2)
+(* I.2 *)
+(*
       3
     /   \     4
     7   5    /
@@ -15,10 +15,12 @@ type unionfind = {
   rang: int array;
 }
 
+
 let create n = {
   a = Array.init n (fun x -> x);
   rang = Array.make n 0;
 };;
+
 
 let find (uf:unionfind) i =
   let rec aux j =
@@ -26,8 +28,8 @@ let find (uf:unionfind) i =
     else aux uf.a.(j) in
   aux i;;
 
-(* Calcule le rang à partir d'un tableau de prédecesseurs *)
-let rang uf =
+
+let rang uf =(* Calcule le rang à partir d'un tableau de prédecesseurs *)
   let n = Array.length uf in
   let rang = Array.make n 0 in
   let rec aux x acc =
@@ -49,13 +51,11 @@ let union uf i j =
   )
   else uf.a.(ri) <- rj;;
 
-(* Question 4)
-   On pourrait utiliser une structure de
-   tableau dynamique pour permettre
-   d'ajouter des éléments
-*)
+(* I.4 *)
+(*On pourrait utiliser une structure de
+tableau dynamique pour permettre
+d'ajouter des éléments*)
 
-(* Exemple du sujet:
-  let pred = [|7; 5; 6; 3; 4; 3; 4; 3|];;
-  let uf = {a=pred;rang=rang pred};;
-*)
+(*Exemple du sujet:
+let pred = [|7; 5; 6; 3; 4; 3; 4; 3|];;
+let uf = {a=pred;rang=rang pred};;*)
