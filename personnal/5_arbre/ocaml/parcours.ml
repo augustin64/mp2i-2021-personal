@@ -5,13 +5,16 @@ let rec prefix acc = function
     | E -> acc
     | N(r, g, d) -> r::prefix (prefix acc d) g;;
 
+
 let rec infix = function
     | E -> []
     | N(r, g, d) -> (infix g)@(r::infix d);;
 
+
 let rec suffix = function
     | E -> []
     | N(r, g, d) -> (suffix g)@(suffix d)@[r];;
+
 
 let bfs a =
     let rec aux cur next = match cur with
@@ -20,6 +23,7 @@ let bfs a =
             | E -> aux q next
             | N(r, g, d) -> r::aux q (g::d::next) in
     aux [a] [];;
+
 
 let rec reconstruct pre inf =
     if Array.length pre = 0 then E else (
@@ -42,6 +46,7 @@ let rec reconstruct pre inf =
         done;
         N(r, (reconstruct g_pre g_inf), (reconstruct d_pre d_inf)));;
 
+
 let rec est_abr1 = function
     | E -> true, max_int, min_int
     (* Renvoie est_un_abr, element_min, element_max *)
@@ -51,13 +56,16 @@ let rec est_abr1 = function
                     (min min_g r),
                     (max max_d r);;
 
+
 let rec croissant = function
     | [] -> true 
     | [e] -> true
     | e1::e2::q when e1 < e2 -> false
     | _::q -> croissant q;;
 
+
 let est_abr2 a = croissant (infix a);;
+
 
 let sort l =
     let rec aux = function
