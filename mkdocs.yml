@@ -96,6 +96,7 @@ nav:
       - "TD 2 : Programmation dynamique": 7_algo/3_dyn_prog/td/TD_programmation_dynamique.md
   - DS / DM:
     - "DS 5 : Corrigé partiel": ds/ds5/cor/cs21_cor.md
+    - "DS 5 : Classement": ds/ds5/rank_ds5.png
     - "DS 5 : Notebook pour le corrigé partiel": ds/ds5/cor/cs21_cor_nb.ipynb
     - "DS 5 : Arbres couvrants et pavages (Centrale 2021)": ds/ds5/cs21.md
     - "DS 5 : Rapport": ds/ds5/cs21_rapport.md
@@ -108,6 +109,8 @@ nav:
     - "DS 1 : OCaml, complexité, algorithmique": ds/ds1/ds1.md
     - "DM 2 : Multiplication de polynômes et FFT": dm/fft/fft.md
     - "DM 2 : corrigé": https://github.com/mp2i-fsm/mp2i-2021/blob/main/dm/fft/fft.ml
+  - Colles:
+    - "Programmation dynamique": colles/dpr_dyn/dpr_dyn.md
 plugins:
   - mkdocs-jupyter
   - search
