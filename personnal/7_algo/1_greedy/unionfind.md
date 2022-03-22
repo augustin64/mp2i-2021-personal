@@ -4,10 +4,10 @@ La structure de tableau des pères est plus pertinente dans cet exercice car on 
 ## I.2
 
       3  
-    /   \     4  
+    /   \\     4  
     7   5    /  
   /    /    6  
-  0   1      \  
+  0   1      \\  
               2  
 
 ```ocaml
@@ -60,6 +60,8 @@ tableau dynamique pour permettre
 d'ajouter des éléments  
 
 Exemple du sujet:  
-let pred = [|7; 5; 6; 3; 4; 3; 4; 3|];;  
-let uf = {a=pred;rang=rang pred};;  
+```ocaml
+let pred = [|7; 5; 6; 3; 4; 3; 4; 3|];;
+let uf = {a=pred;rang=rang pred};;
 
+```

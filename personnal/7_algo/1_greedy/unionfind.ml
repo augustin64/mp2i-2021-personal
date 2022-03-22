@@ -4,10 +4,10 @@
 (* I.2 *)
 (*
       3
-    /   \     4
+    /   \\     4
     7   5    /
   /    /    6
-  0   1      \
+  0   1      \\
               2
 *)
 type unionfind = {
@@ -56,6 +56,6 @@ let union uf i j =
 tableau dynamique pour permettre
 d'ajouter des éléments*)
 
-(*Exemple du sujet:
+(*Exemple du sujet:*)
 let pred = [|7; 5; 6; 3; 4; 3; 4; 3|];;
-let uf = {a=pred;rang=rang pred};;*)
+let uf = {a=pred;rang=rang pred};;
