@@ -95,13 +95,19 @@ nav:
     - "Programmation dynamique": 7_algo/3_dyn_prog/dyn_prog.md
     - "Recherche de mot dans un texte": 8_string/1_search/search.md
     - "Compression": 8_string/2_compression/compression.md
+    - 8_string/2_compression/compression_code.ipynb
     - TD:
       - "TD 1 : Algorithmes gloutons et diviser pour régner": 7_algo/2_divide_conquer/td/td_div_greedy.md
       - "TD 2 : Programmation dynamique": 7_algo/3_dyn_prog/td/TD_programmation_dynamique.md
       - "TD : Algorithmique sur les chaînes de caractères": 8_string/td/td_string_search.md
     - TP:
       - 8_string/tp/tp1_string_search.ipynb
+  - Logique:
+    - "Logique propositionelle : Syntaxe": 9_logic/1_syntax_propositional/syntax_propositional.md
+    - "Logique propositionelle : Sémantique": 9_logic/2_semantic_propositional/semantic_propositional.md
+    - "TD Logique 1": 9_logic/td/td1/td_logique.md
   - DS / DM:
+    - "DS 6 : Corrigé": ds/ds6/cs_vote_2020.ipynb
     - "DS 5 : Corrigé partiel": ds/ds5/cor/cs21_cor.md
     - "DS 5 : Classement": ds/ds5/rank_ds5.png
     - "DS 5 : Notebook pour le corrigé partiel": ds/ds5/cor/cs21_cor_nb.ipynb
