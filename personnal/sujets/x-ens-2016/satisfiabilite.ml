@@ -138,3 +138,45 @@ let deux_sat_vers_graphe f =
       aux q in
   aux f;
   g;;
+
+(* II.2.16 *)
+let deux_sat f =
+  let g = deux_sat_vers_graphe f in
+  let n = Array.length g in
+  let rec sat ccs = match ccs with
+  | [] -> true
+  | cc::q -> let tab = Array.make n false in
+    let rec sat_cc = function
+      | [] -> true
+      | v::qcc -> if v mod 2 = 0 && tab.(v+1) then false
+                else if v mod 2 = 1 && tab.(v-1) then false
+                else (tab.(v) <- true; sat_cc qcc) in
+      sat_cc cc && sat q in
+  deux_sat_vers_graphe f |> cfc |> sat;;
+
+(* III Résolution de k-SAT pour k arbitraire *)
+(* III.17 *)
+let et a b = match a, b with
+  | Faux, _ | _, Faux -> Faux
+  | Vrai, Vrai -> Vrai
+  | _ -> Indetermine;;
+
+let non = function
+  | Vrai -> Faux
+  | Faux -> Vrai
+  | Indetermine -> Indetermine;;
+
+let ou a b = match a, b with
+  | Vrai, _ | _, Vrai -> Vrai
+  | Faux, Faux -> Faux
+  | _ -> Indetermine;;
+
+(* III.18 *)
+let rec eval_clause v = function
+  | [] -> Faux
+  | (V  x)::q -> ou v.(x) (eval_clause v q)
+  | (NV x)::q -> ou (non v.(x)) (eval_clause v q);;
+
+let rec eval f v = match f with
+  | [] -> Vrai
+  | c::q -> et (eval_clause v c) (eval q v);;
