@@ -4,7 +4,9 @@ repo_url: https://github.com/fortierq/mp2i-2021
 edit_uri: ""
 nav:
   - Binder: https://mybinder.org/v2/gh/fortierq/mp2i-binder/main?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Ffortierq%252Fmp2i-2021%26urlpath%3Dlab%252Ftree%252Fmp2i-2021%252F%26branch%3Dmain
-  - Introduction:
+  - Basthon: https://notebook.basthon.fr/ocaml
+  - Librairie: https://github.com/fortierq/mp2i-library
+  - Intro:
     - Cours de prérentrée: 0_intro/stage/stage.md
     - 0_intro/stage/exos_python.ipynb
     - Introduction à la MP2I: 0_intro/0_intro.md
@@ -28,11 +30,11 @@ nav:
       - 1_ocaml/tp/tp4.ipynb
       - 1_ocaml/tp/tp5.ipynb
       - 1_ocaml/tp/tp6.ipynb
-  - Analyse de programme:
+  - Analyse d'algo.:
     - Complexité: 2_analyse_programme/1_complexite/complexite.md
     - Preuve de programme: 2_analyse_programme/2_preuve/preuve.md
     - TD preuve de programme: 2_analyse_programme/2_preuve/td_preuve.md
-  - Structures séquentielles:
+  - Structures linéaires:
     - Liste, tableau, pile, file: 3_structure_sequentielle/1_pile_file/pile_file.md
     - Dictionnaire et table de hachage: 3_structure_sequentielle/2_hachage_dictionnaire/hachage.md
     - "TD 1 : pile et file": 3_structure_sequentielle/td/td_structures1_cor.md
@@ -95,12 +97,12 @@ nav:
     - "Diviser pour régner": 7_algo/2_divide_conquer/divide_conquer.md
     - "Programmation dynamique": 7_algo/3_dyn_prog/dyn_prog.md
     - "Recherche de mot dans un texte": 8_string/1_search/search.md
-    - "Compression": 8_string/2_compression/compression.md
+    - "Compression de texte": 8_string/2_compression/compression.md
     - 8_string/2_compression/compression_code.ipynb
     - TD:
       - "TD 1 : Algorithmes gloutons et diviser pour régner": 7_algo/2_divide_conquer/td/td_div_greedy.md
       - "TD 2 : Programmation dynamique": 7_algo/3_dyn_prog/td/TD_programmation_dynamique.md
-      - "TD : Algorithmique sur les chaînes de caractères": 8_string/td/td_string_search.md
+      - "TD 3 : Algorithmique sur les chaînes de caractères": 8_string/td/td_string_search.md
     - TP:
       - 8_string/tp/tp1_string_search.ipynb
   - Logique:
@@ -112,8 +114,10 @@ nav:
     - "TD Logique 1": 9_logic/td/td1/td_logique.md
     - "X-ENS 2016 : Problème 2-SAT": https://www.ens.psl.eu/IMG/file/concours/2016/sujets/MPI/16_mpi_sujet_infoa.pdf
     - 9_logic/td/xens_sat.ipynb
-  - DS / DM:
+  - DS:
+    - ds/ds7/ds7_cor.ipynb
     - "DS 6 : Corrigé": ds/ds6/cs_vote_2020.ipynb
+    - "DS 6 : Classement": ds/ds6/ds6.png
     - "DS 5 : Corrigé partiel": ds/ds5/cor/cs21_cor.md
     - "DS 5 : Classement": ds/ds5/rank_ds5.png
     - "DS 5 : Notebook pour le corrigé partiel": ds/ds5/cor/cs21_cor_nb.ipynb
