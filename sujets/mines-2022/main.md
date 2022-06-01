@@ -1,3 +1,4 @@
+```ocaml
 type mot = char list;;
 
 let array_of_mot w =
@@ -26,29 +27,44 @@ let distance b c =
 module CharMap = Map.Make(Char);;
 type trie = Node of trie CharMap.t;;
 
-(* II.1.13 *)
+```
+
+## II.1.13
+```ocaml
 let trie_vide = Node CharMap.empty;;
 
 let trie_mot_vide = Node (CharMap.add '$' trie_vide CharMap.empty);;
 
-(* II.1.14 *)
+```
+
+## II.1.14
+```ocaml
 let trie_singleton x = Node (CharMap.add x trie_mot_vide CharMap.empty);;
 
-(* II.1.15 *)
+```
+
+## II.1.15
+```ocaml
 let rec trie_mem (c : char list) (Node tcm) = match c with
   | [] -> CharMap.find_opt '$' tcm <> None
   | e::q -> match CharMap.find_opt e tcm with
           | None -> false
           | Some a -> trie_mem q a;;
 
-(* II.1.16 *)
+```
+
+## II.1.16
+```ocaml
 let rec trie_add c (Node tcm) = match c with
   | [] -> Node(CharMap.add '$' trie_vide tcm)
   | e::q -> match CharMap.find_opt e tcm with
       | Some a -> trie_add q a
       | None -> Node (CharMap.add e (trie_add q trie_vide) tcm);;
 
-(* II.1.18 *)
+```
+
+## II.1.18
+```ocaml
 let rec trie_trim (Node tcm:trie) : trie =
   let filtre (x:char) (y:trie) : trie option =
     let y = trie_trim y in
@@ -56,3 +72,5 @@ let rec trie_trim (Node tcm:trie) : trie =
     else Some y
   in
   Node(CharMap.filter_map filtre tcm);;
+
+```
