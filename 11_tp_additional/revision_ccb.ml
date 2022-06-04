@@ -26,3 +26,33 @@ let rec quicksort l = match l with
     | [] | [_] -> l
     | e::q -> let l1, l2 = split e q in
               concat (quicksort l1) (e::quicksort l2);;
+
+(* Dictionnaire par table de hachage *)
+type ('a, 'b) dict = {hash: 'a -> int; values: ('a * 'b) list array};;
+
+let create_dict n = {
+    hash=(fun a -> a mod n);
+    values=Array.make n []
+  };;
+
+
+let rec replace a b = function
+    | [] -> [b]
+    | e::q when a=e -> b::q
+    | e::q  -> e::(replace b a q);;
+
+
+let get d k =
+  let h = d.hash k in
+  let rec aux = function
+    | [] -> None
+    | (k', v)::q when k=k' -> Some v
+    | _::q -> aux q in
+  aux d.values.(h);;
+
+
+let add d (k, v) =
+  let h = d.hash k in
+  match get d k with
+    | None -> d.values.(h) <- (k, v)::d.values.(h)
+    | Some v' -> d.values.(h) <- replace (k, v') (k, v) d.values.(h);;
