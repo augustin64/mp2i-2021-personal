@@ -42,7 +42,7 @@ let rec replace a b = function
     | e::q  -> e::(replace b a q);;
 
 
-let get d k =
+let get_ht d k =
   let h = d.hash k in
   let rec aux = function
     | [] -> None
@@ -51,8 +51,46 @@ let get d k =
   aux d.values.(h);;
 
 
-let add d (k, v) =
+let add_ht d (k, v) =
   let h = d.hash k in
-  match get d k with
+  match get_ht d k with
     | None -> d.values.(h) <- (k, v)::d.values.(h)
     | Some v' -> d.values.(h) <- replace (k, v') (k, v) d.values.(h);;
+
+(* Arbres *)
+type 'a arb = E | N of 'a * 'a arb * 'a arb;;
+
+
+let rec infixe = function
+  | E -> []
+  | N(r, g, d) -> (infixe g)@[r]@(infixe d);;
+
+
+let rec del_max = function
+  | E -> E, -1
+  | N(r, g, E) -> g, r
+  | N(r, g, d) -> let d', m = del_max d in
+                  N(r, g, d'), m;;
+
+
+let rec del_arb e = function
+  | E -> failwith "L'élément n'existe pas."
+  | N(r, g, d) when r=e -> let g', m = del_max g in
+                            N(m, g', d)
+  | N(r, g, d) when r > e -> N(r, del_arb e g, d)
+  | N(r, g, d) -> N(r, g, del_arb e d);;
+
+
+let rec add_arb e = function
+  | E -> N(e, E, E)
+  | N(r, g, d) when r=e -> N(r,  N(r, g, E), d)
+  | N(r, g, d) when r<e -> N(r, g, add_arb e d)
+  | N(r, g, d) -> N(r, add_arb e g, d);;
+
+
+let rec list_to_arb = function
+  | [] -> E
+  | e::q -> add_arb e (list_to_arb q);;
+
+
+let arb_sort l = list_to_arb l |> infixe;;
