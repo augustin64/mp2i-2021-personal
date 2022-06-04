@@ -7,34 +7,35 @@ struct list {
     list* next;
 };
 
+/*
+* Définit simplement un pointeur vers une liste chaînée
+*/
 typedef struct queue queue;
 struct queue {
     struct list* list;
-    struct list* last;
 };
 
 void add(queue* q, int n) {
     list* l = (list*)malloc(sizeof(list));
-    l->next = q->last;
+    l->next = q->list;
     l->val = n;
-    q->last = l;
+    q->list = l;
 };
 
 queue* empty_queue(int n) {
     queue* q = (queue*)malloc(sizeof(queue));
     list* l = (list*)malloc(sizeof(list));
     q->list = l;
-    q->last = l;
     l->val = n;
     l->next = NULL;
     return q;
 };
 
 int pop(queue* q) {
-    int val = q->last->val;
-    list* last = q->last;
-    q->last = q->last->next;
-    free(last);
+    int val = q->list->val;
+    list* first = q->list;
+    q->list = q->list->next;
+    free(first);
     return val;
 }
 
@@ -51,8 +52,8 @@ int main () {
     queue* q = empty_queue(0);
     add(q, 5);
     add(q, 2);
-    print_list(q->last);
-    printf("Last elem: %d\n", pop(q));
-    print_list(q->last);
+    print_list(q->list);
+    printf("First element: %d\n", pop(q));
+    print_list(q->list);
     return 0;
 }
