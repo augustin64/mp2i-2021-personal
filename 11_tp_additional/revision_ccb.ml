@@ -1,3 +1,5 @@
+#use "module.ml"
+
 (* Recherche par dichotomie *)
 let dicho t e =
   let n = Array.length t in
@@ -94,3 +96,28 @@ let rec list_to_arb = function
 
 
 let arb_sort l = list_to_arb l |> infixe;;
+
+(* Graphes *)
+let dfs g r =
+    let n = Array.length g in
+    let vus = Array.make n false in
+    let rec aux u =
+      if not vus.(u) then (
+        vus.(u) <- true;
+        List.iter aux g.(u)
+      ) in
+    aux r;;
+
+
+let bfs g r =
+    let n = Array.length g in
+    let q = ref Bst.empty in
+    let vus = Array.make n false in
+    let add v =
+      if not vus.(v) then (vus.(v) <- true; q := Bst.add v !q) in
+    add r;
+    while not (Bst.is_empty !q) do
+      let u = Bst.peek_min !q in
+      q := Bst.take_min !q;
+      List.iter add (g.(u))
+    done;;
